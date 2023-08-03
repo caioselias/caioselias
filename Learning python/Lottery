@@ -1,0 +1,14 @@
+from random import randint
+
+'''
+Every time I went to play a lottery game, I was in doubt of which number to choose.
+'''
+numeros = range(1,26)
+premio = set()
+
+
+
+
+while len(premio) < 15:
+    premio.add(randint(1,26))
+    print(premio)
