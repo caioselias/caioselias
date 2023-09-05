@@ -1,0 +1,45 @@
+#transcrição e tradução + comparação de sequencias. 
+from Bio.Seq import Seq
+
+seq1 = Seq("ATCG")
+
+print(seq1)
+
+#sequencia complementar
+seq_compl = seq1.complement()
+print(seq_compl)
+
+#sequencia rev
+
+seq_rev_compl = seq1.reverse_complement()
+print(seq_rev_compl)
+
+###
+
+
+ent = open("arquivo.fasta").read()
+sai = open("arquivo.html","w")
+
+cont = {}
+
+for i in ['A', 'T', 'C', 'G']:
+    for j in ['A', 'T', 'C', 'G']:
+        cont[i+j] = 0
+
+ent = ent.replace("\n","")
+
+for k in range(len(ent)-1):
+    cont[ent[k] + ent[k+1]] += 1
+
+
+#html
+
+i = 1
+for k in cont:
+    transp = cont[k]/max(cont.values())
+    sai.write("<div style='width:100px; border:2px solid #111; color:#fff; height:100px; float:left; background-color:rgba(34, 40, 255, "+str(transp)+"')>"+k+"</div>")
+    if i % 4 == 0:
+        sai.write("<div style='clear:both'></div>")
+    i += 1
+
+sai.close()
