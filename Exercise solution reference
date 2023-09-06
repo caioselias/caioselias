@@ -1,0 +1,9 @@
+#exercise solution proposed in class to transcribe the chr.gz for reference hg38.fa
+
+%%bash
+
+for i in {1..22}; do
+  zcat "chr${i}.fa.gz"
+done > hg38.fa
+
+#I don't know if it's right
